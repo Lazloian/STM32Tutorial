@@ -24,6 +24,7 @@ To enable timer 4, look under the Timers section and click on TIM4.
 Each timer may have multiple channels on different pins.
 Timer 4 has 4 channels, enable the channels on the pins you would like to use for PWM output.
 Also click the box next to **Inernal Clock** so that the timer uses the internal clock. **THIS IS VERY IMPORTANT**
+This will determine what source your timer will use.
 Leave the other options and channels that you do not want to use disabled.
 
 The next step is to set the presacler and counter period for the timer to get the PWM frequency that you want.
@@ -45,3 +46,11 @@ Look at your Clock Configuration to see what frequency your timer is on.
 
 Notice that there are two different frequencies, the APB1 peripheral clocks and the APB1 Timer clocks.
 The value that will be used in the equation (and the frequency that your clock is on) is in the AP1 Timer clocks box because it is a timer.
+
+![Frequency Config](./src/step2.JPG)
+
+The next step is to decide what values to use for the prescaler and counter period.
+The counter period is duration the timer will count till the next pulse.
+The value that you set the counter to will be divided by the counter period to determine the duty cycle.
+So the counter period will determine the range of values for the duty cycle.
+In this tutorial a prescaler of 840 and a counter period of 2000 is used.
