@@ -59,4 +59,10 @@ In this tutorial a prescaler of 840 and a counter period of 2000 is used because
 
 Notice that they have been input with a `-1` at the end of each value.
 This is important because the registers that store these values on the STM32 add 1 to these values automatically.
+If you look down the configuration menu, you can see options for the channels that you have enabled PWM for.
+You can set the default duty cycle of each channel in this menu next to Pulse.
+The default value is `0` which set the duty cycle to 0 percent.
+For this example, channel 1 could be set to a 50 percent duty cycle if a pulse of 1000 is input which is half the counter period.
+
+# Starting PWM in the Code and Changing the Pulse
 
