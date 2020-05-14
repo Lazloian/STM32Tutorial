@@ -23,4 +23,12 @@ Timer 4 will be used for this tutorial since it its pin is output on the Adafrui
 To enable timer 4, look under the Timers section and click on TIM4.
 Each timer may have multiple channels on different pins.
 Timer 4 has 4 channels, enable the channels on the pins you would like to use for PWM output.
-Also click the box next to Inernal Clock. **THIS IS VERY IMPORTANT**
+Also click the box next to **Inernal Clock** so that the timer uses the internal clock. **THIS IS VERY IMPORTANT**
+Leave the other options and channels that you do not want to use disabled.
+
+The next step is to set the presacler and counter period for the timer to get the PWM frequency that you want.
+In this example, a servo will be controlled using PWM.
+A servo needs a frequency of 50 Hz for input.
+The frequency of the PWM signal is determined by the equation `PWM frequency = (Timer Frequency) / ((Prescaler + 1) * (Counter Period + 1)`.
+
+
