@@ -53,4 +53,10 @@ The next step is to decide what values to use for the prescaler and counter peri
 The counter period is duration the timer will count till the next pulse.
 The value that you set the counter to will be divided by the counter period to determine the duty cycle.
 So the counter period will determine the range of values for the duty cycle.
-In this tutorial a prescaler of 840 and a counter period of 2000 is used.
+In this tutorial a prescaler of 840 and a counter period of 2000 is used because the value in the APB1 Timer box was 84MHz.
+
+`(84000000) / (840 * 2000) = 50Hz`
+
+Notice that they have been input with a `-1` at the end of each value.
+This is important because the registers that store these values on the STM32 add 1 to these values automatically.
+
