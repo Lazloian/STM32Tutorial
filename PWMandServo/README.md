@@ -92,3 +92,36 @@ The pulse of the PWM channel can be changed as well:
   // turn off channel 2 on timer 4
   htim4.Instance->CCR2 = 0;
 ```
+
+## Controlling a Servo
+
+Servos are controlled on a PWM frequency of 50Hz.
+The range of duty cycles that can be used to control a servo generally range from 5 percent to 10 percent duty cycle, but not all servos are the same and some testing is required to determine the range for your servo.
+For this tutorial, a SG90 microservo was used.
+I found that the range of duty cycles for this servo is from 2.5 percent to 12.5 percent.
+With a counter period of 2000, this results in a range of values for the pulse to be from 50 to 250.
+
+Here is an example for controlling the servo with STM32:
+
+```c
+  // start PWM channel 3 on timer 4, the one the servo is connected to
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3);
+
+  // set servo on channel 3 of timer 4 to 180 degrees (12.5% duty cycle) and wait 2 seconds
+  htim4.Instance->CCR3 = 250;
+  HAL_Delay(2000);
+
+  // 90 degrees (7.5% duty cycle)
+  htim4.Instance->CCR3 = 150;
+  HAL_Delay(2000);
+
+  // 0 degrees (2.5% duty cycle)
+  htim4.Instance->CCR3 = 50;
+  HAL_Delay(2000);
+
+  // turn off PWM (servo can move freely and not set to any position)
+  htim4.Instance->CCR3 = 0;
+  HAL_Delay(5000);
+```
+
+I found that the servo has a range greater than 180 degrees. Values as high as 255 and as low as 1 can be used to set the servo to a position. This is nice because the range of an 8-bit unsigned int has a range of 0 to 255.
