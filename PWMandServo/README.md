@@ -64,5 +64,31 @@ You can set the default duty cycle of each channel in this menu next to Pulse.
 The default value is `0` which set the duty cycle to 0 percent.
 For this example, channel 1 could be set to a 50 percent duty cycle if a pulse of 1000 is input which is half the counter period.
 
-# Starting PWM in the Code and Changing the Pulse
+## Starting PWM in the Code and Changing the Pulse
 
+Each individual PWM must be started in your main function.
+The command `HAL_TIM_PWM_Start(htim, Channel)` is used to start the channel.
+`htim` is the pointer to the timer object that the channel is on.
+`Channel` is the channel that you would like to start.
+
+Here is an example starting PWM channels 1, 2, and 3 on timer 4:
+
+```c
+  // start PWM channels 1, 2, and 3 on timer 4
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3);
+```
+
+The pulse of the PWM channel can be changed as well:
+
+```c
+  // set channel 3 on timer 4 to 250 (which is 12.5% duty cycle for a counter period of 2000)
+  htim4.Instance->CCR3 = 250;
+  
+  // set channel 1 on timer 4 to full duty cycle (100% would be the counter period of 2000)
+  htim4.Instance->CCR1 = 2000;
+  
+  // turn off channel 2 on timer 4
+  htim4.Instance->CCR2 = 0;
+```
