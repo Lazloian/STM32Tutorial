@@ -29,6 +29,19 @@ Leave the other options and channels that you do not want to use disabled.
 The next step is to set the presacler and counter period for the timer to get the PWM frequency that you want.
 In this example, a servo will be controlled using PWM.
 A servo needs a frequency of 50 Hz for input.
-The frequency of the PWM signal is determined by the equation `PWM frequency = (Timer Frequency) / ((Prescaler + 1) * (Counter Period + 1)`.
+The frequency of the PWM signal is determined by the equation:
 
+`PWM frequency = (Timer Clock Frequency) / ((Prescaler + 1) * (Counter Period + 1))`
 
+To find the Timer Clock Frequency, you must first found out what source the timer is using.
+This can be found by looking up the clock tree of your device.
+
+![Clock Tree](./src/clocktree.JPG)
+
+Looking at the clock tree for the STM32F4, timer 4 is on the APB1 bus.
+Look at your Clock Configuration to see what frequency your timer is on.
+
+![Clock Config](./src/clock.JPG)
+
+Notice that there are two different frequencies, the APB1 peripheral clocks and the APB1 Timer clocks.
+The value that will be used in the equation (and the frequency that your clock is on) is in the AP1 Timer clocks box because it is a timer.
