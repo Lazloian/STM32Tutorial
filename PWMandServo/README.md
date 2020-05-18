@@ -97,7 +97,7 @@ The pulse of the PWM channel can be changed as well:
 
 Servos are controlled on a PWM frequency of 50Hz.
 The range of duty cycles that can be used to control a servo generally range from 5 percent to 10 percent duty cycle, but not all servos are the same and some testing is required to determine the range for your servo.
-For this tutorial, a SG90 microservo was used.
+For this tutorial, a [SG90 microservo](http://www.ee.ic.ac.uk/pcheung/teaching/DE1_EE/stores/sg90_datasheet.pdf) was used.
 I found that the range of duty cycles for this servo is from 2.5 percent to 12.5 percent.
 With a counter period of 2000, this results in a range of values for the pulse to be from 50 to 250.
 
