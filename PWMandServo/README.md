@@ -11,7 +11,7 @@ HCLK can be whatever value, but it will have an effect on the frequency of your 
 
 The next step is to pick your timer that you would like to use for PWM.
 The STM43F405 has 14 timers, but not all of them can do PWM.
-To find out which timers that can be used, look at the reference manual for your device under the timers section.
+To find out which timers that can be used, look at the [reference manual](https://www.st.com/resource/en/reference_manual/dm00031020-stm32f405-415-stm32f407-417-stm32f427-437-and-stm32f429-439-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf) for your device under the timers section.
 
 ![reference](./src/ref.JPG)
 
