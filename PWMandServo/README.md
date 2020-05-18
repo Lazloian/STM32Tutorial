@@ -35,7 +35,7 @@ The frequency of the PWM signal is determined by the equation:
 `PWM frequency = (Timer Clock Frequency) / ((Prescaler + 1) * (Counter Period + 1))`
 
 To find the Timer Clock Frequency, you must first found out what source the timer is using.
-This can be found by looking up the clock tree of your device.
+This can be found by looking up the [clock tree](http://waijung.aimagin.com/block_diagrams.htm) of your device.
 
 ![Clock Tree](./src/clocktree.JPG)
 
